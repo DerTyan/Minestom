@@ -19,8 +19,8 @@ public class EntityPositionAndRotationPacket implements ServerPacket {
         writer.writeShort(deltaX);
         writer.writeShort(deltaY);
         writer.writeShort(deltaZ);
-        writer.writeByte((byte) (yaw * 256 / 360));
-        writer.writeByte((byte) (pitch * 256 / 360));
+        writer.writeByte((byte) (yaw % 360 / 360 * 256));
+        writer.writeByte((byte) (pitch % 360 / 360 * 256));
         writer.writeBoolean(onGround);
     }
 

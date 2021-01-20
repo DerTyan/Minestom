@@ -196,13 +196,13 @@ public class CollisionUtils {
                 return newPosition;
             case BOTH:
                 // Apply Y velocity/gravity
-                return new Position(currentPosition.getX(), newPosition.getY(), currentPosition.getZ());
+                return new Position(currentPosition.getX(), newPosition.getY(), currentPosition.getZ(), currentPosition.getY(), currentPosition.getPitch());
             case X:
                 // Apply Y/Z velocity/gravity
-                return new Position(currentPosition.getX(), newPosition.getY(), newPosition.getZ());
+                return new Position(currentPosition.getX(), newPosition.getY(), newPosition.getZ(), newPosition.getYaw(), newPosition.getPitch());
             case Z:
                 // Apply X/Y velocity/gravity
-                return new Position(newPosition.getX(), newPosition.getY(), currentPosition.getZ());
+                return new Position(newPosition.getX(), newPosition.getY(), currentPosition.getZ(), newPosition.getYaw(), newPosition.getPitch());
         }
         throw new IllegalStateException("Something weird happened...");
     }

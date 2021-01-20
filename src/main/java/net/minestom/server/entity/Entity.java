@@ -425,7 +425,7 @@ public abstract class Entity implements Viewable, EventHandler, DataContainer, P
             } else if (positionChange && viewChange) {
                 EntityPositionAndRotationPacket positionAndRotationPacket =
                         EntityPositionAndRotationPacket.getPacket(getEntityId(),
-                                position, new Position(cacheX, cacheY, cacheZ), isOnGround());
+                                position, new Position(cacheX, cacheY, cacheZ, cacheYaw, cachePitch), isOnGround());
 
                 sendPacketToViewersAndSelf(positionAndRotationPacket);
 
@@ -475,7 +475,7 @@ public abstract class Entity implements Viewable, EventHandler, DataContainer, P
                 final float newX = position.getX() + velocity.getX() / tps;
                 final float newY = position.getY() + velocity.getY() / tps;
                 final float newZ = position.getZ() + velocity.getZ() / tps;
-                Position newPosition = new Position(newX, newY, newZ);
+                Position newPosition = new Position(newX, newY, newZ, position.getYaw(), position.getPitch());
 
                 Vector newVelocityOut = new Vector();
 
